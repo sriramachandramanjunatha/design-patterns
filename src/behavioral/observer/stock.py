@@ -16,7 +16,7 @@ class Observer(ABC):
         ...
 
 
-# --- Subject (Observable) ---
+# --- Stock (Observable) ---
 class Stock:
     def __init__(self, symbol: str, price: float) -> None:
         self._symbol = symbol
@@ -48,6 +48,7 @@ class Stock:
 
 
 # --- Concrete Observers ---
+# --- Mobile App Observer ---
 class MobileAppObserver(Observer):
     def __init__(self, user: str) -> None:
         self._user = user
@@ -57,6 +58,7 @@ class MobileAppObserver(Observer):
         self.last_message = f"[Mobile:{self._user}] {symbol} is now ${price}"
 
 
+# -- Email Alert Observer ---
 class EmailAlertObserver(Observer):
     def __init__(self, email: str) -> None:
         self._email = email
@@ -66,6 +68,7 @@ class EmailAlertObserver(Observer):
         self.last_message = f"[Email:{self._email}] {symbol} changed to ${price}"
 
 
+# --- Dashboard Observer (accumulates history) ---
 class DashboardObserver(Observer):
     def __init__(self) -> None:
         self.history: list[str] = []
