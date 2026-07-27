@@ -8,6 +8,10 @@ reversible. Hard-coding undo logic per action creates tangled, untestable code.
 Encapsulate each action as a **Command object** with `execute()` and `undo()`.
 An **Invoker** (Editor) maintains a history stack for undo and a redo stack.
 
+## Key Insight
+Command is everywhere: "Every Git commit is a command with undo (revert). Every Redux action is a command dispatched to a reducer. Every DB migration has up() and down(). Undo/redo in any editor is a command history stack.".
+
+
 ## 🏗️ Structure
 ```
 Command (ABC)
